@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Header } from "./components/Header/Header";
+import "./App.css";
+
+// Placeholder page components
+const HomePage = () => (
+  <div style={{ padding: "2rem" }}>
+    <h2>Welcome to Sorpreso!</h2>
+    <p>This is the home page.</p>
+  </div>
+);
+
+const MenuPage = () => (
+  <div style={{ padding: "2rem" }}>
+    <h2>Menu</h2>
+    <p>Browse our delicious menu items here.</p>
+  </div>
+);
+
+const NewsPage = () => (
+  <div style={{ padding: "2rem" }}>
+    <h2>News</h2>
+    <p>Stay updated with the latest news and updates.</p>
+  </div>
+);
+
+const AboutPage = () => (
+  <div style={{ padding: "2rem" }}>
+    <h2>About Us</h2>
+    <p>Learn more about Sorpreso and our story.</p>
+  </div>
+);
+
+const ContactPage = () => (
+  <div style={{ padding: "2rem" }}>
+    <h2>Contact</h2>
+    <p>Get in touch with us.</p>
+  </div>
+);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="app">
+        <Header />
+        <main style={{ marginTop: "90px" }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
