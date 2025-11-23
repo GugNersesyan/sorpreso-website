@@ -7,6 +7,7 @@ interface NavItem {
     path: string;
 }
 
+
 const navItems: readonly NavItem[] = [
     { label: "Home", path: "/" },
     { label: "Menu", path: "/menu" },

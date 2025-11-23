@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
+import { Contacts } from "./components/Contacts/Contacts";
 import "./App.css";
 
 // Placeholder page components
@@ -43,7 +44,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header />
-        <main style={{ marginTop: "90px" }}>
+        <main className="app__main">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/menu" element={<MenuPage />} />
@@ -52,6 +53,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
+        <Contacts />
       </div>
     </BrowserRouter>
   );
