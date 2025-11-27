@@ -1,6 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import "./App.css";
+import MenuPage from "./components/Menu/MenuPage.tsx";
+import MenuCategoryPage from "./components/Menu/MenuCategoryPage/MenuCategoryPage";
 
 // Placeholder page components
 const HomePage = () => (
@@ -10,12 +12,7 @@ const HomePage = () => (
   </div>
 );
 
-const MenuPage = () => (
-  <div style={{ padding: "2rem" }}>
-    <h2>Menu</h2>
-    <p>Browse our delicious menu items here.</p>
-  </div>
-);
+
 
 const NewsPage = () => (
   <div style={{ padding: "2rem" }}>
@@ -43,14 +40,23 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header />
-        <main style={{ marginTop: "90px" }}>
+        <main className="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/menu" element={<MenuPage />} />
+
+           <Route path="/menu" element={<MenuPage />}>
+  {/* Редирект по умолчанию на matcha */}
+  <Route index element={<Navigate to="matcha" replace />} />
+
+  <Route path=":category" element={<MenuCategoryPage />} />
+</Route>
+
+
             <Route path="/news" element={<NewsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
+
         </main>
       </div>
     </BrowserRouter>
