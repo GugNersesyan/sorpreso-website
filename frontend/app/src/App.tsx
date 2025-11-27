@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Header } from "./components/Header/Header";
+import { Contacts } from "./components/Contacts/Contacts";
 import "./App.css";
 import MenuPage from "./components/Menu/MenuPage.tsx";
 import MenuCategoryPage from "./components/Menu/MenuCategoryPage/MenuCategoryPage";
@@ -11,8 +12,6 @@ const HomePage = () => (
     <p>This is the home page.</p>
   </div>
 );
-
-
 
 const NewsPage = () => (
   <div style={{ padding: "2rem" }}>
@@ -44,20 +43,19 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
 
-           <Route path="/menu" element={<MenuPage />}>
-  {/* Редирект по умолчанию на matcha */}
-  <Route index element={<Navigate to="matcha" replace />} />
-
-  <Route path=":category" element={<MenuCategoryPage />} />
-</Route>
-
+            <Route path="/menu" element={<MenuPage />}>
+              {/* Редирект по умолчанию на matcha */}
+              <Route index element={<Navigate to="matcha" replace />} />
+              <Route path=":category" element={<MenuCategoryPage />} />
+            </Route>
 
             <Route path="/news" element={<NewsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
-
         </main>
+
+        <Contacts />
       </div>
     </BrowserRouter>
   );
