@@ -28,6 +28,15 @@ a {
     padding-top: 6rem;
     padding-left: 2rem;
     left: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.left_side_bar.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .side_bar_item {
