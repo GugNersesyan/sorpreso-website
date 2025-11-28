@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Contacts } from "./components/Contacts/Contacts";
-import "./App.css";
-import MenuPage from "./components/Menu/MenuPage.tsx";
+import MenuPage from "./components/Menu/MenuPage";
 import MenuCategoryPage from "./components/Menu/MenuCategoryPage/MenuCategoryPage";
+import "./App.css";
+
 
 // Placeholder page components
 const HomePage = () => (
@@ -39,7 +40,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header />
-        <main className="main">
+        <main className="app__main">
           <Routes>
             <Route path="/" element={<HomePage />} />
 
@@ -48,13 +49,11 @@ function App() {
               <Route index element={<Navigate to="matcha" replace />} />
               <Route path=":category" element={<MenuCategoryPage />} />
             </Route>
-
             <Route path="/news" element={<NewsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
-
         <Contacts />
       </div>
     </BrowserRouter>
